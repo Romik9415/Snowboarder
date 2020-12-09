@@ -1,4 +1,4 @@
-package com.fleetsu.fleetsu.ui
+package com.fleetsu.fleetsu.ui.discover
 
 
 import android.graphics.Rect
@@ -7,17 +7,13 @@ import android.os.Bundle
 import android.view.View
 import com.fleetsu.fleetsu.R
 import com.fleetsu.fleetsu.baseui.BaseFragment
-import com.fleetsu.fleetsu.extensions.addSystemTopPadding
 import com.fleetsu.fleetsu.extensions.doOnApplyWindowInsets
-import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.discover_fragment.*
 
-class StartFragment : BaseFragment() {
-    override fun layoutId() = R.layout.fragment_start
+class DiscoverFragment : BaseFragment() {
+    override fun layoutId() = R.layout.discover_fragment
 
     override fun onViewReady(inflatedView: View, args: Bundle?) {
-//        constraintLayout.addSystemBottomPadding()
-//        clSubscriptionContainer.addSystemTopPadding()
-
         activity?.window?.apply {
             decorView.systemUiVisibility =
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -31,6 +27,14 @@ class StartFragment : BaseFragment() {
             }
         }
 
+        initAdapter()
+
+    }
+
+    private fun initAdapter() {
+        // The pager adapter, which provides the pages to the view pager widget.
+        val pagerAdapter = SkiResortAdapter(this)
+        viewPager.adapter = pagerAdapter
     }
 
     override fun setListeners() {
