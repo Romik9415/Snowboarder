@@ -3,7 +3,6 @@ package com.fleetsu.fleetsu.di
 import android.app.Application
 import com.fleetsu.fleetsu.BaseApplication
 import com.fleetsu.fleetsu.di.modules.*
-import com.fleetsu.fleetsu.ui.login.modules.LoginActivityModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
@@ -23,7 +22,7 @@ import javax.inject.Singleton
         AppApiModule::class,
 
         //activities module
-        LoginActivityModule::class
+        MainActivityModule::class
     ]
 )
 interface AppComponent {

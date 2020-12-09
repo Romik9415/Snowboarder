@@ -17,6 +17,8 @@ abstract class BaseFragment : Fragment(), Injectable {
     /*Using for triggering inflating finished event*/
     abstract fun onViewReady(inflatedView: View, args: Bundle?)
 
+    abstract fun setListeners()
+
     /*Using for initializing view models with viewModelProvider*/
     abstract fun initViewModel()
 
@@ -28,7 +30,7 @@ abstract class BaseFragment : Fragment(), Injectable {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initViewModel()
-        activity?.hideKeyboard()
+        setListeners()
     }
 
     override fun onDestroy() {
