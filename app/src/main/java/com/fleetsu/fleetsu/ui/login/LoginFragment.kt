@@ -1,24 +1,26 @@
 package com.fleetsu.fleetsu.ui.login
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.fleetsu.fleetsu.AppViewModelsFactory
 import com.fleetsu.fleetsu.R
 import com.fleetsu.fleetsu.baseui.BaseFragment
-import com.fleetsu.fleetsu.data.database.entity.UserEntity
 import com.fleetsu.fleetsu.extensions.addSystemBottomPadding
 import com.fleetsu.fleetsu.extensions.addSystemTopPadding
-import com.fleetsu.fleetsu.extensions.loadWithGlide
-import com.fleetsu.fleetsu.extensions.toastL
-import com.fleetsu.fleetsu.glide.GlideApp
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.fragment_login.*
-import javax.inject.Inject
+
 
 class LoginFragment : BaseFragment(), View.OnClickListener {
 
@@ -47,6 +49,17 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
         ivIll4.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_4)
         ivIll5.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_5)
         ivIll6.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_6)
+
+        setAuthListener()
+    }
+
+    private fun setAuthListener() {
+        FirebaseAuth.getInstance().addAuthStateListener {
+            if (it.currentUser != null) {
+                val direction = LoginFragmentDirections.actionLoginFragmentToStartFragment()
+                findNavController().navigate(direction)
+            }
+        }
     }
 
     override fun initViewModel() {
@@ -77,10 +90,52 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v) {
             tvStart -> {
-                //LoginFra
-                val direction = LoginFragmentDirections.actionLoginFragmentToStartFragment()
-                findNavController().navigate(direction)
+                startLogin()
             }
         }
+    }
+
+    private fun startLogin() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        val mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso);
+        startActivityForResult(mGoogleSignInClient.signInIntent, RC_LOGIN)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RC_LOGIN) {
+            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account: GoogleSignInAccount? = task.getResult(ApiException::class.java)
+                account?.let {
+                    firebaseAuthWithGoogle(it)
+                }
+            } catch (e: ApiException) {
+                Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
+        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+        FirebaseAuth.getInstance().signInWithCredential(credential)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+                    Toast.makeText(requireContext(), "User Signed In", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(
+                        requireContext(), "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+    }
+
+    companion object {
+        const val RC_LOGIN = 123
     }
 }

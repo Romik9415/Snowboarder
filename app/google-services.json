@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "976929931318",
+    "project_id": "snowboarder-hackathon-test",
+    "storage_bucket": "snowboarder-hackathon-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976929931318:android:7430d0e0493c2d2f17d897",
+        "android_client_info": {
+          "package_name": "com.fleetsu.fleetsu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976929931318-c7pq3llmc5upug6ufrc18fs0gg8j62ql.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fleetsu.fleetsu",
+            "certificate_hash": "3f658e3885e8c660543970b8e6f45e0053dd6636"
+          }
+        },
+        {
+          "client_id": "976929931318-5q9e3lom4ln20c1rldkillvb5vhdvqel.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8qE655ZvDDdXu_elUrjEGcbxuyEz-4KE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976929931318-5q9e3lom4ln20c1rldkillvb5vhdvqel.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
