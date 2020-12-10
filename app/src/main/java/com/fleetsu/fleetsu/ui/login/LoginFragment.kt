@@ -24,11 +24,6 @@ import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : BaseFragment(), View.OnClickListener {
 
-//    @Inject
-//    lateinit var vmFactory: AppViewModelsFactory
-//    private lateinit var viewModel: LoginViewModel
-
-
     override fun layoutId(): Int = R.layout.fragment_login
 
     override fun onViewReady(inflatedView: View, args: Bundle?) {
@@ -63,24 +58,6 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun initViewModel() {
-//        viewModel = ViewModelProviders
-//            .of(this, vmFactory)
-//            .get(LoginViewModel::class.java)
-//
-//        viewModel.getUser().observe(this, Observer<UserEntity> { t ->
-//            t?.let {
-//                Log.d("test", it.firstName)
-//                showAvatar(it.avatarUrl)
-//            }
-//        })
-    }
-
-    private fun showAvatar(avatarUrl: String) {
-//        ivAvatar.loadWithGlide(avatarUrl)
-//        val glide = GlideApp.with(this)
-//        glide.load(avatarUrl)
-//            .fitCenter()
-//            .into(ivAvatar)
     }
 
     override fun setListeners() {
