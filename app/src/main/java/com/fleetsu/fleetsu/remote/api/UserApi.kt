@@ -1,11 +1,16 @@
 package com.fleetsu.fleetsu.remote.api
 
-import okhttp3.ResponseBody
+import com.fleetsu.fleetsu.data.database.We
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface UserApi {
 
-    @GET("getUser")
-    fun getUser(): Call<ResponseBody>
+    @GET("weather")
+    fun getWeatherByCoordinates(
+        @Query("lon") lon: Double,
+        @Query("lat") lat: Double,
+        @Query("appid") appid: String
+    ): Call<We>
 }

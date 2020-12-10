@@ -18,8 +18,8 @@ android {
     def Boolean = "Boolean"
     def String = "String"
 
-    def devHost = '"https://app.fleetsu.com/v1/"'
-    def prodHost = '"https://app.fleetsu.com/v1/"'
+    def devHost = '"https://api.openweathermap.org/data/2.5/"'
+    def prodHost = '"https://api.openweathermap.org/data/2.5/"'
 
     defaultConfig {
         applicationId "com.fleetsu.fleetsu"
