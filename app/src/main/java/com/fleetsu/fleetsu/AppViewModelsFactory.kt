@@ -4,6 +4,7 @@ import androidx.collection.ArrayMap
 import androidx.lifecycle.ViewModel
 import com.fleetsu.fleetsu.di.AppViewModelsComponent
 import com.fleetsu.fleetsu.ui.login.LoginViewModel
+import com.fleetsu.fleetsu.ui.main.UserViewModel
 import java.util.concurrent.Callable
 
 class AppViewModelsFactory(private val appViewModelsComponent: AppViewModelsComponent) :
@@ -11,6 +12,7 @@ class AppViewModelsFactory(private val appViewModelsComponent: AppViewModelsComp
 
     override fun fillViewModels(creators: ArrayMap<Class<*>, Callable<out ViewModel>>) {
         creators[LoginViewModel::class.java] = Callable { appViewModelsComponent.provideViewModel() }
+        creators[UserViewModel::class.java] = Callable { appViewModelsComponent.provideUserViewModel() }
     }
 
 }

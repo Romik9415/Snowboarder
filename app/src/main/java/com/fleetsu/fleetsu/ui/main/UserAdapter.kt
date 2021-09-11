@@ -3,6 +3,7 @@ package com.fleetsu.fleetsu.ui.main
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ListAdapter
 import com.fleetsu.fleetsu.R
 
@@ -30,7 +31,7 @@ class UserAdapter(private val userAdapterInt: UserAdapterInterface) :
     }
 
     interface UserAdapterInterface {
-        fun onUserClicked(userId: Long) {
+        fun onUserClicked(userName: String) {
         }
     }
 

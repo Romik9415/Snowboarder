@@ -16,11 +16,11 @@ class MemeAdapter(
     object MemeDiff : DiffUtil.ItemCallback<Meme>() {
 
         override fun areItemsTheSame(oldItem: Meme, newItem: Meme) =
-            oldItem.id == newItem.id
+            oldItem.meme_id == newItem.meme_id
 
 
         override fun areContentsTheSame(oldItem: Meme, newItem: Meme) =
-            oldItem.memeUrl == newItem.memeUrl
+            false
 
     }
 

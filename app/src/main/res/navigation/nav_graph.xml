@@ -9,7 +9,11 @@
             android:id="@+id/startFragment"
             android:name="com.fleetsu.fleetsu.ui.discover.DiscoverFragment"
             android:label="fragment_start"
-            tools:layout="@layout/discover_fragment" />
+            tools:layout="@layout/discover_fragment" >
+        <argument
+                android:name="userName"
+                app:argType="string" />
+    </fragment>
     <fragment
             android:id="@+id/loginFragment"
             android:name="com.fleetsu.fleetsu.ui.login.LoginFragment"

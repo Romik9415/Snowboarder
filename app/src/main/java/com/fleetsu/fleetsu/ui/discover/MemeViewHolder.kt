@@ -13,18 +13,18 @@ class MemeViewHolder(
     fun bind(meme: Meme, kohii: Kohii) {
         itemView.pvMeme.hide()
         itemView.ivMeme.hide()
-        itemView.tvName.text = meme.memeUrl
+        itemView.tvName.text = meme.meme_url
         itemView.setOnClickListener {
             //userAdapterInterface.onUserClicked(user.id)
         }
-        when (meme.type) {
+        when (MemeType.Video) {
             MemeType.Video -> {
                 itemView.pvMeme.show()
-                kohii.setUp(meme.memeUrl).bind(itemView.pvMeme)
+                kohii.setUp(meme.meme_url).bind(itemView.pvMeme)
             }
             MemeType.Photo -> {
                 itemView.ivMeme.show()
-                itemView.ivMeme.loadWithGlideRoundedCorners(meme.memeUrl, 16.dp)
+                itemView.ivMeme.loadWithGlideRoundedCorners(meme.meme_url, 16.dp)
             }
         }
     }

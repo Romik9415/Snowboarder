@@ -6,6 +6,6 @@ import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(private val userRepository: UserRepository) : ViewModel() {
 
-    fun getUser(lat: Double, lon: Double) = userRepository.getUser(lat,lon)
+    //fun getUser(lat: Double, lon: Double) = userRepository.getUser(lat,lon)
 
 }

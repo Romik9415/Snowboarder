@@ -11,7 +11,7 @@ class UserViewHolder(
     fun bind(user: User) {
         itemView.tvName.text = user.userName
         itemView.setOnClickListener {
-            userAdapterInterface.onUserClicked(user.id)
+            userAdapterInterface.onUserClicked(user.userName)
         }
     }
 

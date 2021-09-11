@@ -1,10 +1,12 @@
 package com.fleetsu.fleetsu.ui.discover
 
+import android.provider.MediaStore
+
 data class Meme(
-    val id: Long,
-    val isLiked: Boolean,
-    val memeUrl: String,
-    val type: MemeType
+    val meme_id: String,
+    val isLiked: Boolean?,
+    val meme_url: String
+//    val type: MemeType.Video
 )
 
 enum class MemeType {

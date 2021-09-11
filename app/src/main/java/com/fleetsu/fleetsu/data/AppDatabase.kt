@@ -8,11 +8,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.fleetsu.fleetsu.AppExecutors
 import com.fleetsu.fleetsu.data.database.dao.UserDao
-import com.fleetsu.fleetsu.data.database.entity.UserEntity
+import com.fleetsu.fleetsu.ui.main.User
 
 @Database(
     entities = [
-        UserEntity::class
+        User::class
     ],
     version = 1,
     exportSchema = false

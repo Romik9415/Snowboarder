@@ -81,8 +81,13 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
     //room
-    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-runtime:2.3.0"
     kapt "androidx.room:room-compiler:$room_version" // use kapt for Kotlin
+
+    //room
+    implementation("androidx.room:room-ktx:2.3.0")
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
 
     //glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
@@ -98,6 +103,7 @@ dependencies {
     // Kotlin
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
 
     // Feature module Support
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
