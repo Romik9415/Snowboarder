@@ -6,10 +6,13 @@ import android.os.Handler
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
+import androidx.viewpager2.widget.ViewPager2
 import com.fleetsu.fleetsu.R
 import com.fleetsu.fleetsu.baseui.BaseFragment
 import com.fleetsu.fleetsu.extensions.setFocus
+import com.fleetsu.fleetsu.ui.discover.ZoomOutPageTransformer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_main.*
 
 
@@ -25,7 +28,7 @@ class MainFragment : BaseFragment(), View.OnClickListener {
         standardBottomSheetBehavior?.state = BottomSheetBehavior.STATE_EXPANDED
         val l = listOf(User(0, "Pizza_boy"), User(1, "Gopa"))
         (rvUsers.adapter as UserAdapter).submitList(l)
-
+        standardBottomSheetBehavior?.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
     override fun setListeners() {

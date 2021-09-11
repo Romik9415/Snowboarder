@@ -7,10 +7,13 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.fleetsu.fleetsu.R
 import com.fleetsu.fleetsu.baseui.BaseFragment
 import com.fleetsu.fleetsu.extensions.addSystemBottomPadding
 import com.fleetsu.fleetsu.extensions.addSystemTopPadding
+import com.fleetsu.fleetsu.ui.discover.ZoomOutPageTransformer
+import com.fleetsu.fleetsu.ui.main.OnBoardingAdapter
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -27,25 +30,7 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
     override fun layoutId(): Int = R.layout.fragment_login
 
     override fun onViewReady(inflatedView: View, args: Bundle?) {
-//        constraintLayout.addSystemBottomPadding()
-//        clSubscriptionContainer.addSystemTopPadding()
-//
-//        activity?.window?.apply {
-//            decorView.systemUiVisibility =
-//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                decorView.systemUiVisibility =
-//                    decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
-//            }
-//        }
-//        ivIll1.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_1)
-//        ivIll2.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_2)
-//        ivIll3.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_3)
-//        ivIll4.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_4)
-//        ivIll5.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_5)
-//        ivIll6.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_6)
-//
-//        val q = listOf(1, 2, 3)
+        initAdapter()
     }
 
     private fun setAuthListener() {
@@ -111,6 +96,26 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
                     ).show()
                 }
             }
+    }
+
+    private fun initAdapter() {
+        // The pager adapter, which provides the pages to the view pager widget.
+        val pagerAdapter = OnBoardingAdapter(this)
+        viewPager.adapter = pagerAdapter
+        viewPager.setPageTransformer(ZoomOutPageTransformer())
+        ci3Onboarding.setViewPager(viewPager)
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+//                if (viewPager.adapter?.itemCount == position + 1) {
+//                    //changeColor(ActionBtnController.ActionBtnColor.PRIMARY)
+//                    animateToCheck(true)
+//                } else {
+//                    changeColor(ActionBtnController.ActionBtnColor.ACCENT)
+//                    animateToCheck(false)
+//                }
+                super.onPageSelected(position)
+            }
+        })
     }
 
     companion object {
