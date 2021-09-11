@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Regram</string>
     <string name="hello_blank_fragment">Regram</string>
+
+    <string name="on_brd_title_1">Meme auto generator</string>
+    <string name="on_brd_title_2">Function N2</string>
+    <string name="on_brd_title_3">Function N3</string>
+
+    <string name="on_brd_subtitle_1">Create Meme with your friends photo</string>
+    <string name="on_brd_subtitle_2">Some cool description</string>
+    <string name="on_brd_subtitle_3">Some cool description</string>
 </resources>

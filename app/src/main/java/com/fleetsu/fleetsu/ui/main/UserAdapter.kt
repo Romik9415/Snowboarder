@@ -6,13 +6,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.fleetsu.fleetsu.R
 
-class UserAdapter : ListAdapter<User, UserViewHolder>(UserDiff) {
+class UserAdapter(private val userAdapterInt: UserAdapterInterface) :
+    ListAdapter<User, UserViewHolder>(UserDiff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val view = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.item_user_info, parent, false)
-        return UserViewHolder(view)
+        return UserViewHolder(userAdapterInt, view)
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
@@ -28,5 +29,9 @@ class UserAdapter : ListAdapter<User, UserViewHolder>(UserDiff) {
             oldItem.userName == newItem.userName
     }
 
+    interface UserAdapterInterface {
+        fun onUserClicked(userId: Long) {
+        }
+    }
 
 }

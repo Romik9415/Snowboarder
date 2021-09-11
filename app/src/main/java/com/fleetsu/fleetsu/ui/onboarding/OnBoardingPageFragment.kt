@@ -1,4 +1,4 @@
-package com.fleetsu.fleetsu.ui.main
+package com.fleetsu.fleetsu.ui.onboarding
 
 import android.os.Bundle
 import android.view.View

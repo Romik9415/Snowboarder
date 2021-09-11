@@ -8,6 +8,9 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.fleetsu.fleetsu.glide.GlideApp
 
 fun ImageView.loadWithGlide(url: String?, placeholderResId: Int? = null) {
@@ -17,6 +20,19 @@ fun ImageView.loadWithGlide(url: String?, placeholderResId: Int? = null) {
         }
         glideRequest.into(this)
     }
+}
+
+fun ImageView.loadWithGlideRoundedCorners(url: String?, radius: Int, placeholderId: Int? = null) {
+    GlideApp.with(context).load(url)
+        .also { glideRequest ->
+            placeholderId?.let {
+                glideRequest.placeholder(it)
+            }
+            glideRequest
+                .transform(CenterCrop(), RoundedCorners(radius))
+                .into(this)
+        }
+
 }
 
 fun Fragment.toastL(text: String) {

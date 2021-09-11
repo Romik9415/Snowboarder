@@ -1,22 +1,17 @@
 package com.fleetsu.fleetsu.ui.login
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.fleetsu.fleetsu.R
 import com.fleetsu.fleetsu.baseui.BaseFragment
-import com.fleetsu.fleetsu.extensions.addSystemBottomPadding
-import com.fleetsu.fleetsu.extensions.addSystemTopPadding
 import com.fleetsu.fleetsu.ui.discover.ZoomOutPageTransformer
-import com.fleetsu.fleetsu.ui.main.OnBoardingAdapter
+import com.fleetsu.fleetsu.ui.onboarding.OnBoardingAdapter
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth

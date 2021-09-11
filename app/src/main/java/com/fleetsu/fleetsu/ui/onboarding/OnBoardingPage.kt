@@ -1,4 +1,4 @@
-package com.fleetsu.fleetsu.ui.main
+package com.fleetsu.fleetsu.ui.onboarding
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

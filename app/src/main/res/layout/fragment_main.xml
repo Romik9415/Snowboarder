@@ -49,17 +49,6 @@
                 tools:itemCount="5"
                 tools:listitem="@layout/item_user_info" />
 
-        <com.airbnb.lottie.LottieAnimationView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/cat_loader"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
@@ -76,19 +65,32 @@
 
             <EditText
                     android:id="@+id/edAddUser"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="32dp"
-                    android:layout_marginEnd="32dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginBottom="32dp"
                     android:background="@drawable/shape_rounded_search"
                     android:hint="Enter user name"
                     android:padding="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/setUserName"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                    android:id="@+id/setUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/shape_rounded_accent"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_round_done_24"
+                    android:text="Find"
+                    app:layout_constraintBottom_toBottomOf="@+id/edAddUser"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/edAddUser" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
