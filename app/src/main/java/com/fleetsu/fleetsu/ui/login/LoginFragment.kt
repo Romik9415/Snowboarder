@@ -27,32 +27,31 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
     override fun layoutId(): Int = R.layout.fragment_login
 
     override fun onViewReady(inflatedView: View, args: Bundle?) {
-        constraintLayout.addSystemBottomPadding()
-        clSubscriptionContainer.addSystemTopPadding()
-
-        activity?.window?.apply {
-            decorView.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                decorView.systemUiVisibility =
-                    decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
-            }
-        }
-        ivIll1.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_1)
-        ivIll2.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_2)
-        ivIll3.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_3)
-        ivIll4.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_4)
-        ivIll5.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_5)
-        ivIll6.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_6)
-
-        setAuthListener()
+//        constraintLayout.addSystemBottomPadding()
+//        clSubscriptionContainer.addSystemTopPadding()
+//
+//        activity?.window?.apply {
+//            decorView.systemUiVisibility =
+//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                decorView.systemUiVisibility =
+//                    decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+//            }
+//        }
+//        ivIll1.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_1)
+//        ivIll2.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_2)
+//        ivIll3.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_3)
+//        ivIll4.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_4)
+//        ivIll5.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_5)
+//        ivIll6.animation = AnimationUtils.loadAnimation(this.context, R.anim.anim_bounce_fly_6)
+//
+//        val q = listOf(1, 2, 3)
     }
 
     private fun setAuthListener() {
         FirebaseAuth.getInstance().addAuthStateListener {
             if (it.currentUser != null) {
-                val direction = LoginFragmentDirections.actionLoginFragmentToStartFragment()
-                findNavController().navigate(direction)
+
             }
         }
     }
@@ -73,12 +72,14 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun startLogin() {
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-        val mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso);
-        startActivityForResult(mGoogleSignInClient.signInIntent, RC_LOGIN)
+        val direction = LoginFragmentDirections.actionLoginFragmentToMainFragment()
+        findNavController().navigate(direction)
+//        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//            .requestIdToken(getString(R.string.default_web_client_id))
+//            .requestEmail()
+//            .build()
+//        val mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso);
+//        startActivityForResult(mGoogleSignInClient.signInIntent, RC_LOGIN)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

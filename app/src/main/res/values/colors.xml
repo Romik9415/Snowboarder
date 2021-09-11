@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3DD070</color>
-    <color name="colorPrimaryDark">#39C269</color>
-    <color name="colorAccent">#5754FB</color>
+    <color name="colorPrimary">#A1FFDA</color>
+    <color name="colorPrimaryDark">#246CFD</color>
+    <color name="colorAccent">#C25EFF</color>
 
     <color name="translucent">#00000000</color>
 
@@ -10,13 +10,14 @@
     <color name="close_btn">#E1E0E4</color>
     <color name="close_btn_transparent">#50E1E0E4</color>
 
-    <color name="colorBackground">#F3F4F9</color>
-    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorBackground">#181A1F</color>
+    <color name="colorSurface">#272A34</color>
 
-    <color name="colorOnBackground">#000</color>
-    <color name="colorOnSurface">#000</color>
-    <color name="colorOnPrimary">#FFF</color>
+    <color name="colorOnBackground">#fff</color>
+    <color name="colorOnSurface">#fff</color>
+<!--    <color name="colorOnPrimary">#FFF</color>-->
 
     <color name="rippleLight">#1f000000</color>
     <color name="rippleDark">#1fFFFFFF</color>
+
 </resources>

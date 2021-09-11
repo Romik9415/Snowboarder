@@ -16,7 +16,6 @@
 
     <style name="AppTheme.Launcher" parent="@style/AppTheme.LightNav">
         <item name="android:windowBackground">@drawable/preview_window</item>
-
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
