@@ -3,17 +3,33 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:background="?android:selectableItemBackground">
+
+    <ImageView
+            android:id="@+id/ivInstIll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/shape_circle_1"
+            android:padding="8dp"
+            android:src="@drawable/ic_instagram"
+            app:layout_constraintBottom_toBottomOf="@+id/tvName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvName" />
 
     <TextView
             android:id="@+id/tvName"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
+            android:layout_marginStart="16dp"
             android:padding="16dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivInstIll"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Name" />
 

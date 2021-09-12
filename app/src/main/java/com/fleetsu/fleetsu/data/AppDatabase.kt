@@ -14,7 +14,7 @@ import com.fleetsu.fleetsu.ui.main.User
     entities = [
         User::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

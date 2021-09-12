@@ -2,9 +2,7 @@ package com.fleetsu.fleetsu.remote.api
 
 import com.fleetsu.fleetsu.ui.discover.Meme
 import kotlinx.coroutines.Deferred
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface UserApi {
 
@@ -13,8 +11,10 @@ interface UserApi {
         @Body userBody: LoadUserDataToServerBody
     ): Deferred<List<Meme>>
 
-    @GET("memes")
-    fun getAllMemesAsync(): Deferred<List<Meme>>
+    @GET("memes/{user_name}")
+    fun getAllMemesAsync(
+        @Path("user_name") userName: String
+    ): Deferred<List<Meme>>
 }
 
 

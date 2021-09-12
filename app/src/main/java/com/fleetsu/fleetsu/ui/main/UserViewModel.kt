@@ -21,6 +21,12 @@ class UserViewModel @Inject constructor(
         addUserContentOnBack(user.userName)
     }
 
+    fun removeUser(user: User) {
+        launch {
+            localUserRepository.removeUser(user)
+        }
+    }
+
     private fun addUserContentOnBack(userString: String) {
         launchHandled({ localUserRepository.setUserToRepo(userString) }, {
 

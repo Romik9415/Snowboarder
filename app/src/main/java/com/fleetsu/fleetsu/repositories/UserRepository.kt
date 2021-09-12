@@ -27,6 +27,10 @@ class UserRepository
         appDatabase.userDao().insertData(user)
     }
 
+    suspend fun removeUser(user:User){
+        appDatabase.userDao().delete(user)
+    }
+
     suspend fun setUserToRepo(userString: String) {
         val body = LoadUserDataToServerBody(userString)
         val response = userApi.startLoadUserByUserNameAsync(body).await()
@@ -34,7 +38,7 @@ class UserRepository
     }
 
     suspend fun getUserByUserName(userName:String) : List<Meme>{
-        val response = userApi.getAllMemesAsync().await()
+        val response = userApi.getAllMemesAsync(userName).await()
         val t = response
         return response
     }

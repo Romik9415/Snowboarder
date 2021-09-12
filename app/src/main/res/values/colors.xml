@@ -20,4 +20,9 @@
     <color name="rippleLight">#1f000000</color>
     <color name="rippleDark">#1fFFFFFF</color>
 
+    <color name="crcl1">#BAEFC5</color>
+    <color name="crcl2">#DACFFC</color>
+    <color name="crcl3">#FEC7D5</color>
+    <color name="crcl4">#C0E7FD</color>
+
 </resources>

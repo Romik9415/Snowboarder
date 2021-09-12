@@ -3,9 +3,12 @@ package com.fleetsu.fleetsu.ui.main
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.fleetsu.fleetsu.AppViewModelsFactory
 import com.fleetsu.fleetsu.R
@@ -68,6 +71,8 @@ class MainFragment : BaseFragment(), View.OnClickListener, UserAdapter.UserAdapt
             overScrollMode = View.OVER_SCROLL_NEVER
             adapter = expandableChargersAdapter
         }
+        val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
+        itemTouchHelper.attachToRecyclerView(rvUsers)
     }
 
     override fun onClick(v: View?) {
@@ -81,8 +86,8 @@ class MainFragment : BaseFragment(), View.OnClickListener, UserAdapter.UserAdapt
             }
             setUserName -> {
                 if (edAddUser.text.toString().isNotBlank()) {
-                    val id = rvUsers.adapter?.itemCount?.toLong() ?: 0
-                    viewModel.setUser(User(id, edAddUser.text.toString()))
+                    //val id = rvUsers.adapter?.itemCount?.toLong() ?: 0
+                    viewModel.setUser(User(edAddUser.text.toString()))
                 }
                 standardBottomSheetBehavior?.state = BottomSheetBehavior.STATE_HIDDEN
                 Handler().postDelayed({
@@ -92,6 +97,30 @@ class MainFragment : BaseFragment(), View.OnClickListener, UserAdapter.UserAdapt
                 }, 300)
             }
         }
+    }
+
+    private val simpleItemTouchCallback: ItemTouchHelper.SimpleCallback = object :
+        ItemTouchHelper.SimpleCallback(
+            0,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
+            Toast.makeText(context, "User Deleted ", Toast.LENGTH_SHORT).show()
+            val position = viewHolder.adapterPosition
+            deleteItemByPosition(position)
+        }
+    }
+
+    private fun deleteItemByPosition(position: Int) {
+        viewModel.removeUser(userList.toList()[position])
     }
 
     override fun onUserClicked(userName: String) {

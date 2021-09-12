@@ -9,7 +9,8 @@ import kohii.v1.exoplayer.Kohii
 
 class MemeAdapter(
     private val memClickListener: OnMemeClickListener,
-    private val kohii: Kohii
+    private val kohii: Kohii,
+    val userName: String
 ) :
     ListAdapter<Meme, MemeViewHolder>(MemeDiff) {
 
@@ -36,7 +37,7 @@ class MemeAdapter(
     }
 
     override fun onBindViewHolder(holder: MemeViewHolder, position: Int) {
-        holder.bind(getItem(position), kohii)
+        holder.bind(getItem(position), kohii, userName)
     }
 }
 

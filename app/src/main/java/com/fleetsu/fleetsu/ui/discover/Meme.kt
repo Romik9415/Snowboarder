@@ -4,7 +4,7 @@ import android.provider.MediaStore
 
 data class Meme(
     val meme_id: String,
-    val isLiked: Boolean?,
+    var isLiked: Boolean?,
     val meme_url: String
 //    val type: MemeType.Video
 )

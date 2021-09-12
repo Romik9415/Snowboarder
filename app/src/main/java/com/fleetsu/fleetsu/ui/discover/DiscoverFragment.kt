@@ -8,9 +8,12 @@ import androidx.recyclerview.widget.SimpleItemAnimator
 import com.fleetsu.fleetsu.AppViewModelsFactory
 import com.fleetsu.fleetsu.R
 import com.fleetsu.fleetsu.baseui.BaseFragment
+import com.fleetsu.fleetsu.extensions.gone
+import com.fleetsu.fleetsu.extensions.show
 import com.fleetsu.fleetsu.ui.main.UserViewModel
 import kohii.v1.exoplayer.Kohii
 import kotlinx.android.synthetic.main.discover_fragment.*
+import kotlinx.android.synthetic.main.discover_fragment.view.*
 import javax.inject.Inject
 
 class DiscoverFragment : BaseFragment(), MemeAdapter.OnMemeClickListener {
@@ -25,17 +28,6 @@ class DiscoverFragment : BaseFragment(), MemeAdapter.OnMemeClickListener {
 
     override fun onViewReady(inflatedView: View, args: Bundle?) {
         initRecyclerView()
-//        val memList = listOf(
-//            Meme(
-//                0,
-//                false,
-//                "https://storage.googleapis.com/prod-reflect-videos/data/swapped_videos/4e9e37c0-6d0f-40c2-ac3d-ae3ec498e83b.mp4",
-//                MemeType.Video
-//            ),
-//            Meme(1, false, "https://i.redd.it/xibya3746le61.jpg", MemeType.Photo),
-//            Meme(2, false, "https://i.redd.it/xibya3746le61.jpg", MemeType.Photo)
-//        )
-        //(
     }
 
 
@@ -44,9 +36,19 @@ class DiscoverFragment : BaseFragment(), MemeAdapter.OnMemeClickListener {
     }
 
     override fun initViewModel() {
+        alvLoader.show()
         viewModel = ViewModelProvider(requireActivity(), vmFactory).get(UserViewModel::class.java)
         viewModel.memList.observe(this, {
             (rvMemes.adapter as MemeAdapter).submitList(it)
+        })
+        viewModel.isLoading.observe(this, {
+            if (it) {
+                alvLoader.show()
+                rvMemes.gone()
+            } else {
+                alvLoader.gone()
+                rvMemes.show()
+            }
         })
         arguments?.getString("userName")?.let {
             viewModel.getUserByUserName(it)
@@ -57,7 +59,7 @@ class DiscoverFragment : BaseFragment(), MemeAdapter.OnMemeClickListener {
     private fun initRecyclerView() {
         val kohii = Kohii[requireContext()]
         kohii.register(this).addBucket(rvMemes)
-        memeAdapter = MemeAdapter(this, kohii)
+        memeAdapter = MemeAdapter(this, kohii, arguments?.getString("userName")?: "user_name")
         with(rvMemes) {
             (itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
             layoutManager = LinearLayoutManager(context)
@@ -69,6 +71,7 @@ class DiscoverFragment : BaseFragment(), MemeAdapter.OnMemeClickListener {
     override fun onLikeClicked(id: Long, checked: Boolean) {
 
     }
+
 
 //    fun View.addSystemBottomPadding(
 //        targetView: View = this,

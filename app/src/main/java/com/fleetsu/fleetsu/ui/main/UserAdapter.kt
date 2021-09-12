@@ -3,7 +3,6 @@ package com.fleetsu.fleetsu.ui.main
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ListAdapter
 import com.fleetsu.fleetsu.R
 
@@ -18,13 +17,13 @@ class UserAdapter(private val userAdapterInt: UserAdapterInterface) :
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), position)
     }
 
     object UserDiff : DiffUtil.ItemCallback<User>() {
 
         override fun areItemsTheSame(oldItem: User, newItem: User) =
-            oldItem.id == newItem.id
+            oldItem.userName == newItem.userName
 
         override fun areContentsTheSame(oldItem: User, newItem: User) =
             oldItem.userName == newItem.userName
