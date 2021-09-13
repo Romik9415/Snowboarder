@@ -18,7 +18,7 @@ class OnBoardingAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
         ),
         OnBoardingPage(
             R.string.on_brd_title_3,
-            R.drawable.eastwood_done,
+            R.drawable.eastwood_success,
             R.string.on_brd_subtitle_1
         )
     )
