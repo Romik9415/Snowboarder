@@ -14,7 +14,7 @@ class AppExecutors(ioThreadsCount: Int) {
 
         private val mainHandler = Handler(Looper.getMainLooper())
 
-        override fun execute(command: Runnable?) {
+        override fun execute(command: Runnable) {
             mainHandler.post(command)
         }
     }

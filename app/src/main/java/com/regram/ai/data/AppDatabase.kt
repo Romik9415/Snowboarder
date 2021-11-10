@@ -22,7 +22,7 @@ abstract class AppDatabase : RoomDatabase() {
     var isDataBaseCreated = MutableLiveData<Boolean>()
 
     companion object {
-        private const val dbName = "fleetsu_db"
+        private const val dbName = "regram_db"
         private var dbInstance: AppDatabase? = null
 
         fun getInstance(app: Application, appExecutors: AppExecutors): AppDatabase {

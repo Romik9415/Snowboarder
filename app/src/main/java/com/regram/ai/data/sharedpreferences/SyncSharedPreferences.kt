@@ -7,7 +7,7 @@ import javax.inject.Singleton
 class SyncSharedPreferences(context: Context) : AppSharedPreferences {
 
     companion object {
-        const val SHARED_PREFERENCES_NAME = "sp_fleetsu_"
+        const val SHARED_PREFERENCES_NAME = "sp_regram_"
         const val KEY_IS_LOGGED_IN = "is_logged_in"
         const val KEY_CURRENT_USER_ID = "current_user_id"
     }
