@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.fleetsu.fleetsu">
+        package="com.regram.ai">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-            android:name=".BaseApplication"
+            android:name="com.regram.ai.BaseApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -14,7 +14,7 @@
             android:usesCleartextTraffic="true"
             android:theme="@style/AppTheme.Launcher">
         <activity
-                android:name=".ui.MainActivity"
+                android:name="com.regram.ai.ui.MainActivity"
                 android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
